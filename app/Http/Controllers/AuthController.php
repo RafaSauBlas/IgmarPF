@@ -301,33 +301,27 @@ class AuthController extends Controller
         if (COUNT($Token) > 0)
         {
             if($Token[0]->uso == null){
-                $Token[0]->uso = date('y-m-d');
-                $Token[0]->save();
-
-
-                return view('editar', ["ido" => $id]);
-
+               $Token[0]->uso = date('y-m-d');
+               $Token[0]->save();
+               return view('editar', ["ido" => $id]);
             }
             else{
-
-                return "si funciona puto";
+                return back()->withErrors([
+                    'code' => 'Este token ya ha sido consumido, solicite otro token a su administrador.',
+                ]);
             }
         }
         else{
-            return "Token invalido, por favor verifique su token e intente nuevamente";
+            return back()->withErrors([
+                'code' => 'El token que ingresó no es un token valido.',
+            ]);
         }
     }
 
     public function tokenEliminar(Request $request){
-
-
         $id = $request->input('id');
-
-
         $valoorsito =  $request->input('TokTok');
-
         $Token = Token::where("tocken", $valoorsito)->get();
-
         if (COUNT($Token) > 0)
         {
             if($Token[0]->uso == null){
@@ -341,12 +335,15 @@ class AuthController extends Controller
 
             }
             else{
-                return "si funciona puto";
+                return back()->withErrors([
+                    'code' => 'Este token ya ha sido consumido, solicite otro token a su administrador.',
+                ]);
             }
         }
         else{
-            return "Token invalido, por favor verifique su token e intente nuevamente";
-
+            return back()->withErrors([
+                'code' => 'El token que ingresó no es un token valido.',
+            ]);
         }
     }
 
