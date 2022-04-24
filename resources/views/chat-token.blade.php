@@ -87,7 +87,7 @@
                                     Volver al inicio
                                 </a> -->
 
-                                <form id="logout-form" action="{{ URL('home') }}" method="GET" class="d-none">
+                                <form id="logout-form" action="{{ URL('/Inicio') }}" method="GET" class="d-none">
                                     @csrf
                                 </form>
                         </div>
@@ -127,25 +127,25 @@
                     </div>
 
                     <div class="form-group">
-                        <a   class="btn btn-block btn-primary"  href="{{ URL('generarToken') }}"
+                        <a   class="btn btn-block btn-primary"  href="{{ URL('/generarToken') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form1').submit();">
 
                                 Generar nuevo token
                             </a>
-                            <form id="logout-form1" action="{{ URL('generarToken') }}" method="POST" class="d-none">
+                            <form id="logout-form1" action="{{ URL('/generarToken') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                     </div>
 
                     <div class="form-group">
-                        <a   class="btn btn-block btn-primary"  href="{{ URL('home') }}"
+                        <a   class="btn btn-block btn-primary"  href="{{ URL('/Inicio') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
 
                                 Volver al inicio
                             </a>
-                            <form id="logout-form" action="{{ URL('home') }}" method="GET" class="d-none">
+                            <form id="logout-form" action="{{ URL('/Inicio') }}" method="GET" class="d-none">
                                 @csrf
                             </form>
                     </div>

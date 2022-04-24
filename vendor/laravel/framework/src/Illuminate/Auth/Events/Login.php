@@ -4,7 +4,7 @@ namespace Illuminate\Auth\Events;
 
 use Illuminate\Queue\SerializesModels;
 
-class Login
+class login
 {
     use SerializesModels;
 

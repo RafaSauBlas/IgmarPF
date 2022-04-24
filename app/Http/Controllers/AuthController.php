@@ -47,7 +47,7 @@ class AuthController extends Controller
                     if($user->id_role == 1){
                     if(Auth::loginUsingId($user->id)){
                         $request->session()->regenerate();
-                        return redirect()->intended('home');
+                        return redirect()->intended('/Inicio');
                     }
                 }
 
@@ -95,7 +95,7 @@ class AuthController extends Controller
                     }
                     else
                     {
-                        return redirect()->intended('home');
+                        return redirect()->intended('/Inicio');
                     }
 
 
@@ -115,8 +115,6 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        
-
         return redirect('/login');
     }
 
@@ -243,7 +241,7 @@ class AuthController extends Controller
         $usuario->delete();
 
         $usuarios = User::get();
-        return redirect('/home')->with(compact('usuarios'));
+        return redirect('/Inicio')->with(compact('usuarios'));
                     }
                     else{
                         return "no tienes permiso, necesitas un token";
@@ -256,7 +254,7 @@ class AuthController extends Controller
         $token->tocken = $tok;
         $token->uso = null;
         $token->save();
-        return view('generarToken')->with(compact('tok'));
+        return view('/generarToken')->with(compact('tok'));
     }
 
     public function tokenSocket()

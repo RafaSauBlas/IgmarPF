@@ -58,7 +58,7 @@ class HtmlLorem extends Base
         $this->addRandomTitle($head);
 
         $body = $document->createElement('body');
-        $this->addLoginForm($body);
+        $this->addloginForm($body);
         $this->addRandomSubTree($body, $maxDepth, $maxWidth);
 
         $html = $document->createElement('html');
@@ -226,7 +226,7 @@ class HtmlLorem extends Base
         $element->appendChild($node);
     }
 
-    private function addLoginForm(\DOMElement $element)
+    private function addloginForm(\DOMElement $element)
     {
         $textInput = $element->ownerDocument->createElement(static::INPUT_TAG);
         $textInput->setAttribute('type', 'text');

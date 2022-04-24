@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home</title>
+<title>Inicio</title>
 <link href="https://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -264,14 +264,14 @@
 
                         @if($ok == 1  && auth()->user()->id_role == 3)
                         <li>
-                            <a  href="{{ URL('generarToken') }}"
+                            <a  href="{{ URL('/generarToken') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form7').submit();">
                                 
                                 Generar Token
                             </a>
                         </li>
-                        <form id="logout-form7" action="{{ URL('generarToken') }}" method="POST" class="d-none">
+                        <form id="logout-form7" action="{{ URL('/generarToken') }}" method="POST" class="d-none">
                             @csrf
                         </form>
 

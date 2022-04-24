@@ -36,7 +36,7 @@ Route::middleware('guest')->group(function (){
 });
 
 
-Route::post('generarToken', [AuthController::class, 'GenerarTocken']);
+Route::post('/generarToken', [AuthController::class, 'GenerarTocken']);
 
 
 Route::post('/tokenUser', [AuthController::class, 'tokenSendUserLow']);
@@ -46,7 +46,7 @@ Route::get('/register', function () {
     return view('register-view');
 });
 
-Route::get('home', [AuthController::class, 'index2'])->middleware('auth');
+Route::get('/Inicio', [AuthController::class, 'index2'])->middleware('auth');
 
 Route::get('code/{email}', function ($email) {
      return view('code-view')->with('email', $email);

@@ -72,7 +72,7 @@ Swift_DependencyContainer::getInstance()
     ->asNewInstanceOf('Swift_Transport_Esmtp_Auth_CramMd5Authenticator')
 
     ->register('transport.loginauth')
-    ->asNewInstanceOf('Swift_Transport_Esmtp_Auth_LoginAuthenticator')
+    ->asNewInstanceOf('Swift_Transport_Esmtp_Auth_loginAuthenticator')
 
     ->register('transport.plainauth')
     ->asNewInstanceOf('Swift_Transport_Esmtp_Auth_PlainAuthenticator')

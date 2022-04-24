@@ -34,7 +34,7 @@
       if(message.valor == 1)
       {
         console.log(data.data)
-        window.location.href = "http://127.0.0.1:8000/home";
+        window.location.href = "http://127.0.0.1:8000/Inicio";
 
       }
       else{

@@ -208,7 +208,7 @@ class Ftp extends AbstractFtpAdapter
     }
 
     /**
-     * Login.
+     * login.
      *
      * @throws ConnectionRuntimeException
      */

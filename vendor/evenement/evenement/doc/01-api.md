@@ -14,7 +14,7 @@ Example:
 
 ```php
 $emitter->on('user.created', function (User $user) use ($logger) {
-    $logger->log(sprintf("User '%s' was created.", $user->getLogin()));
+    $logger->log(sprintf("User '%s' was created.", $user->getlogin()));
 });
 ```
 
