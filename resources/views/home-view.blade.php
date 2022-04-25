@@ -206,242 +206,104 @@
 </style>
 </head>
 <body>
-    @include('sweetalert::alert')
-	
-<nav class="navbar navbar-default">
-	<div class="navbar-header ">
-		
-		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-			<span class="navbar-toggler-icon"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-	</div>
-	<!-- Collection of nav links, forms, and other content for toggling -->
-	<div id="navbarCollapse" class="collapse navbar-collapse">
-		{{-- <ul class="nav navbar-nav">
-			<li class="active"><a href="#">Home</a></li>
-			<li><a href="#">About</a></li>
-			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Services <b class="caret"></b></a>
-				<ul class="dropdown-menu">
-					<li><a href="#">Web Design</a></li>
-					<li><a href="#">Web Development</a></li>
-					<li><a href="#">Graphic Design</a></li>
-					<li><a href="#">Digital Marketing</a></li>
-				</ul>
-			</li>
-			<li><a href="#">Blog</a></li>
-			<li><a href="#">Contact</a></li>
-		</ul> --}}
-		{{-- <form class="navbar-form form-inline"> --}}
-			{{-- <div class="input-group search-box">
-				{{-- <input type="text" id="search" class="form-control" placeholder="Search by Name">
-				{{-- <span class="input-group-addon"><i class="material-icons"></i></span>
-			</div> --}}
-		{{-- </form> --}}
-		<ul class="nav navbar-nav navbar-right">
-
-
-            {{-- <li><a href="#" class="notifications"><i class="fa fa-envelope-o"></i><span class="badge" id="myList"></span></a></li> --}}
-
-
- <li><a  href="{{ URL('sendToken') }}" class="notifications" onclick="event.preventDefault(); document.getElementById('logout-form10').submit();"><i class="fa fa-envelope-o"></i><span class="badge" id="myList"></span></a></li>
-
-            {{-- <li><a href="#" class="messages"><i class="fa fa-envelope-o"></i><span class="badge">10</span></a></li> --}}
-			<li class="dropdown">
-
-				<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action">{{ auth()->user()->nombre }}<b class="caret"></b></a>
-
-				<ul class="dropdown-menu">
-
-					{{-- <li><a href="#"><i class="fa "></i> Profile</a></li> --}}
-					{{-- <li><a href="#"><i class="fa fa-calendar-o"></i> Calendar</a></li> --}}
-                    @if(auth()->user()->id_role == 3)
-                    <li><a href="register"> Registrar Usuarios</a></li>
-                    @endif
-
-                        @if($ok == 1  && auth()->user()->id_role == 3)
-                        <li>
-                            <a  href="{{ URL('/generarToken') }}"
-                                onclick="event.preventDefault();
-                                document.getElementById('logout-form7').submit();">
-                                
-                                Generar Token
-                            </a>
-                        </li>
-                        <form id="logout-form7" action="{{ URL('/generarToken') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-
-                            <li>
-                                <a  href="{{ URL('/sendToken') }}"
-                                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form4').submit();">
-                                    
-                                    Enviar Token
-                                </a>
-                            </li>
-                            <form id="logout-form4" action="{{ URL('/sendToken') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-
-
-
-                        @else
-                        <li>
-                            <a  href="{{ URL('/sendToken') }}"
-                                onclick="event.preventDefault();
-                                document.getElementById('logout-form5').submit();">
-                                <i class="fa fa-user-o"></i>
-                                Pedir Token
-                            </a>
-                        </li>
-                        <form id="logout-form5" action="{{ URL('/sendToken') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                        @endif
-
-					<li class="divider"></li>
-                            <li>
-                                <a  href="{{ URL('logout') }}"
-                                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                                    <i class="material-icons"></i>
-                                    Cerrar sesion
-                                </a>
-                            </li>
-                            <form id="logout-form" action="{{ URL('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-
-
-
-{{-- FORM DEL MENSAJE --}}
-<form id="logout-form10" action="{{ URL('sendToken') }}" method="POST" class="d-none">
-    @csrf
-    </form>
-
-
-				</ul>
-			</li>
-		</ul>
-	</div>
-</nav>
+  @include('sweetalert::alert')
+	  <a href="{{ URL('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+         class="text-sm text-gray-700 dark:text-gray-500 underline">
+        Cerrar sesion
+      </a>
 
 <CENTER><h1>USUARIOS</h1></CENTER>
 
-
-
 <div class="container">
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">E-mail</th>
+		<th scope="col">Editar</th>
+		<th scope="col">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="user" >
+        @foreach ($usuarios as $usuario)
+        @if(auth()->user()->nombre != $usuario->nombre && $usuario->id_role < 3)
+          <td id="let">{!! $usuario->nombre !!}</td>
+          <td id="let">{!! $usuario->email !!}</td>
 
-
-    <table class="table table-dark table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Email</th>
-			<th scope="col">Editar</th>
-			<th scope="col">Eliminar</th>
-          </tr>
-        </thead>
-        <tbody>
-
-          <tr id="user" >
-            @foreach ($usuarios as $usuario)
-            @if(auth()->user()->nombre != $usuario->nombre && $usuario->id_role < 3)
-
-            <td id="let">{!! $usuario->nombre !!}</td>
-            <td id="let">{!! $usuario->email !!}</td>
-
-            @if(auth()->user()->id_role == 3)
-
-            <td id="let">
+        @if(auth()->user()->id_role == 3)
+          <td id="let">
 			<form id="logout-form2" action="editarUser/{{$usuario->id}}" method="GET" class="d-none">
-			<input type="submit" value="EDITAR" class="btn btn-primary Sbtn-sm ">
-		     </form>
-		    </td>
+			  <input type="submit" value="EDITAR" class="btn btn-primary Sbtn-sm">
+		    </form>
+		  </td>
           
-			<td id="let">
-			 <form id="logout-form3" action="/Eliminar" method="POST" class="d-none">
-             @method("delete")
-			 <input type="hidden" name="id" value="{{$usuario->id}}">
-			 @csrf
-			 <input type="submit" value="ELIMINAR" class="btn btn-primary btn-sm" >
-		     </form>
+		  <td id="let">
+			<form id="logout-form3" action="/Eliminar" method="POST" class="d-none">
+              @method("delete")
+			  <input type="hidden" name="id" value="{{$usuario->id}}">
+			  @csrf
+			  <input type="submit" value="ELIMINAR" class="btn btn-primary btn-sm" >
+		    </form>
+		  </td>
+	  </tr>
+      @endif
 
-		    </td>
-				</td>
-            @endif
+      @if(auth()->user()->id_role < 3)     
+        <td id="let">
+          <form id="logout-form24" action="editarUserBajo/{{$usuario->id}}" method="GET" class="d-none">
+            <input type="submit" value="Editar" class="btn btn-primary btn-sm ">
+          </form>
+        </td >
 
-            @if(auth()->user()->id_role < 3)
+        <td id="let" >
+          <form id="logout-form3" action="tokeneliminar/{{$usuario->id}}" method="GET" class="d-none">
+            <input type="hidden" name="id" value="{{$usuario->id}}">
+            <input type="submit" value="Eliminar" class="btn btn-primary btn-sm" >
+          </form>
+        </td>
+      @endif
+      </tr>
+    </tbody>
+  @endif
+ @endforeach
+</table>
 
+	  <form id="logout-form7" action="{{ URL('/generarToken') }}" method="POST" class="d-none">
+        @csrf
+      </form>
+	  <form id="logout-form4" action="{{ URL('/sendToken') }}" method="POST" class="d-none">
+        @csrf
+      </form>
+	  <form id="logout-form5" action="{{ URL('/sendToken') }}" method="POST" class="d-none">
+        @csrf
+      </form>
+	  <form id="logout-form10" action="{{ URL('sendToken') }}" method="POST" class="d-none">
+        @csrf
+      </form>
+	  <form id="logout-form" action="{{ URL('logout') }}" method="POST" class="d-none">
+        @csrf
+      </form>
 
+	  @if(auth()->user()->id_role == 3)
+	    <a href="register" class="btn btn-primary Sbtn-sm"> Registrar usuario</a>
+	  @endif
 
-           
-<td id="let">
-    <form id="logout-form24" action="editarUserBajo/{{$usuario->id}}" method="GET" class="d-none">
-        <input type="submit" value="Editar" class="btn btn-primary btn-sm ">
-         </form>
-</td >
-
-
-
-
-
-
-
-
-    <td id="let" >
-                <form id="logout-form3" action="tokeneliminar/{{$usuario->id}}" method="GET" class="d-none">
-                <input type="hidden" name="id" value="{{$usuario->id}}">
-                <input type="submit" value="Eliminar" class="btn btn-primary btn-sm" >
-                </form>
-
-    </td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                @endif
-
-          </tr>
-
-        </tbody>
-        @endif
-
-
-        @endforeach
-
-      </table>
-
-
+	  @if($ok == 1  && auth()->user()->id_role == 3)
+        <a href="{{ URL('/generarToken') }}" onclick="event.preventDefault(); document.getElementById('logout-form7').submit();" class="btn btn-primary Sbtn-sm">
+          Crear Token
+        </a>
+        <a href="{{ URL('/sendToken') }}" onclick="event.preventDefault(); document.getElementById('logout-form4').submit();" class="btn btn-primary Sbtn-sm">
+          Enviar Token
+        </a>
+	  @else
+        <a href="{{ URL('/sendToken') }}" onclick="event.preventDefault(); document.getElementById('logout-form5').submit();" class="btn btn-primary Sbtn-sm">
+          Pedir Token
+		</a>
+	  @endif
 </div>
-
-
 </body>
 </html>
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

@@ -43,15 +43,14 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <a   class="btn btn-block btn-primary"  href="{{ URL('/generarToken') }}"
-                                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form1').submit();">
-
-                                            Generar nuevo token
-                                        </a>
-                                        <form id="logout-form1" action="{{ URL('/generarToken') }}" method="POST" class="d-none">
-                                            @csrf
-                                        </form>
+                                  <a class="btn btn-block btn-primary"  href="{{ URL('/generarToken') }}"
+                                     onclick="event.preventDefault();
+                                     document.getElementById('logout-form1').submit();">
+                                    Generar nuevo token
+                                  </a>
+                                  <form id="logout-form1" action="{{ URL('/generarToken') }}" method="POST" class="d-none">
+                                    @csrf
+                                  </form>
                                 </div>
 
                                 <div class="form-group">
