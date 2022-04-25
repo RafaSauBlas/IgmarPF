@@ -35,12 +35,12 @@ class TercerMetodo
      */
     public function broadcastOn()
     {
-        return ['channel-tercerMetodo'];
+        return ['channel_Movil'];
     }
 
     public function broadcastAs()
     {
-      return 'event-tercerMetodo';
+      return 'event_Movil';
     }
 
 }

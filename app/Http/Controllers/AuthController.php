@@ -186,11 +186,7 @@ class AuthController extends Controller
     {
         $ok = 1;
     }
-
-
     return view('home-view')->with(compact('usuarios','ok'));
-
-
     }
 
 

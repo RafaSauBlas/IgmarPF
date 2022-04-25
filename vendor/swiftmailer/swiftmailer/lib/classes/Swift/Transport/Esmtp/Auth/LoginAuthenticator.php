@@ -22,7 +22,7 @@ class Swift_Transport_Esmtp_Auth_loginAuthenticator implements Swift_Transport_E
      */
     public function getAuthKeyword()
     {
-        return 'login';
+        return 'LOGIN';
     }
 
     /**
@@ -31,7 +31,7 @@ class Swift_Transport_Esmtp_Auth_loginAuthenticator implements Swift_Transport_E
     public function authenticate(Swift_Transport_SmtpAgent $agent, $username, $password)
     {
         try {
-            $agent->executeCommand("AUTH login\r\n", [334]);
+            $agent->executeCommand("AUTH LOGIN\r\n", [334]);
             $agent->executeCommand(sprintf("%s\r\n", base64_encode($username ?? '')), [334]);
             $agent->executeCommand(sprintf("%s\r\n", base64_encode($password ?? '')), [235]);
 

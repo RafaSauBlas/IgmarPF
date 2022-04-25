@@ -21,8 +21,8 @@
       forceTLS: true
     });
 
-    var channel = pusher.subscribe('channel-tercerMetodo');
-    channel.bind('event-tercerMetodo', function(data) {
+    var channel = pusher.subscribe('channel_Movil');
+    channel.bind('event_Movil', function(data) {
       // alert(JSON.stringify(data));
 
       const message = data.data
@@ -35,16 +35,11 @@
       {
         console.log(data.data)
         window.location.href = "http://127.0.0.1:8000/Inicio";
-
       }
       else{
-
         window.location.href = "http://127.0.0.1:8000/tokenLogout";
       }
-
 });
-
-
 
   </script>
 <style>
@@ -68,9 +63,7 @@ body {
 </head>
 <body>
 <div class="box">
-
-  <center><h1>Esperando respuesta del anfitrion....</h1>
-  
+  <center><h1>Por favor verifique su celular para continuar</h1>
 
   <ul id="myList">
    
