@@ -34,10 +34,10 @@
       if(message.valor == 1)
       {
         console.log(data.data)
-        window.location.href = "http://192.168.2.1:8000/Inicio";
+        window.location.href = "http://192.168.2.4/Inicio";
       }
       else{
-        window.location.href = "https://192.168.2.1/tokenLogout";
+        window.location.href = "https://192.168.2.4/tokenLogout";
       }
 });
 
