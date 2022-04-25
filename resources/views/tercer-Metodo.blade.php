@@ -37,7 +37,7 @@
         window.location.href = "http://192.168.2.1:8000/Inicio";
       }
       else{
-        window.location.href = "https://ncuad.xyz/tokenLogout";
+        window.location.href = "https://192.168.2.1/tokenLogout";
       }
 });
 
