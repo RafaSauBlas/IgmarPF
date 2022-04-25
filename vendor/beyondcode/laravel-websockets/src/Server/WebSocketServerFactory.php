@@ -17,7 +17,7 @@ use Symfony\Component\Routing\RouteCollection;
 class WebSocketServerFactory
 {
     /** @var string */
-    protected $host = '127.0.0.1';
+    protected $host = '164.92.126.118';
 
     /** @var int */
     protected $port = 8080;

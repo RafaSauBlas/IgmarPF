@@ -182,7 +182,7 @@ class AuthController extends Controller
 
     $ok = 0;
 
-    if($request->ip()=='127.0.0.1')
+    if($request->ip()=='192.168.2.1')
     {
         $ok = 1;
     }
@@ -198,7 +198,7 @@ class AuthController extends Controller
 
         $ok = 0;
 
-        if($request->ip()=='127.0.0.1')
+        if($request->ip()=='192.168.2.1')
         {
             $ok = 1;
         }
